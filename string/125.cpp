@@ -5,7 +5,6 @@ public:
     bool isPalindrome(string s) {
       int i=0,j=s.length()-1;
       while(i<j){
-          cout<<s[i]<<" "<<s[j]<<endl;
           while((i<j) && !isalnum(s[i]))
              i++;
           while((i<j) && !(isalnum(s[j])))
