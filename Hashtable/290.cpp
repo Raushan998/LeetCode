@@ -3,29 +3,33 @@ using namespace std;
 class Solution {
 public:
     bool wordPattern(string pattern, string str) {
-        unordered_map<char,string>my_map;
+        unordered_map<char,string>mp1;
+        unordered_map<string,char>mp2;
         vector<string>vect;
         int i=0;
-        string temp="";
-        while(i<str.size()){
-            if(str[i]==' '){
+        string temp;
+        for(char ch : str)
+        {
+            if(ch == ' ')
+            {
                 vect.push_back(temp);
-                 while(str[i]==' ')
-                    i++;
-                temp="";
-             }
-            else{
-                temp+=str[i];
-                i++;
+                temp = "";
             }
+            else
+                temp+= ch;
         }
         vect.push_back(temp);
+        if(vect.size()!=pattern.size())
+             return false;
         for(int i=0;i<pattern.size();i++){
-            if(my_map.find(pattern[i])!=my_map.end()){
-                my_map[pattern[i]]=vect[i];
-            }
-            else if(my_map[pattern[i]]!=vect[i])
+            if(mp1.find(pattern[i])!=mp1.end() && mp1[pattern[i]]!=vect[i]){
                 return false;
+            }
+            else if(mp2.find(vect[i])!=mp2.end() && mp2[vect[i]]!=pattern[i]){
+                return false;
+            }
+            mp1[pattern[i]]=vect[i];
+            mp2[vect[i]]=pattern[i];
         }
         return true;
 
