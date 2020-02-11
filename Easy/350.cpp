@@ -1,5 +1,3 @@
-#include<bits/stdc++.h>
-using namespace std;
 class Solution {
 public:
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
@@ -22,21 +20,3 @@ public:
         return v;
     }
 };
-int main(){
-    Solution s;
-    vector<int>vect1,vect2;
-    int m,n;
-    cin>>m>>n;
-    for(int i=0;i<m;i++){
-        int num;
-        cin>>num;
-        vect1.push_back(num);
-    }
-    for(int i=0;i<n;i++){
-        int num;
-        cin>>num;
-        vect2.push_back(num);
-    }
-    vector<int>vect3=s.intersect(vect1,vect2);
-    return 0;
-}
